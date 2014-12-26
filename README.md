@@ -1,6 +1,6 @@
 # Gnappy
 
-TODO: Write a gem description
+Gnappy is a rails asset pipeline replacement.  It uses gulp and express.  It provides a static server for serving assets in development and a comilation/minification tool for prepare your assets for production.
 
 ## Installation
 
@@ -20,7 +20,21 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Preparing your application
+
+Run the initializer to add the gnappy files to your application:
+
+```ruby
+rails g gnappy:install
+```
+This will add:
+ 1. A package.json for node modules.
+ 2. A gulpfile for starting your static server and compiling assets.
+ 3. A line to your application.rb for the static server port
+ 4. Some gitignore entries
+ 5. A scaffold assets.json file (this replaces your sprocket manifest files)
+
+
 
 ## Contributing
 
