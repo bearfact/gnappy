@@ -3,7 +3,7 @@ require 'json'
 module Gnappy
   module TagHelpers
     def gnappy_javascript_include_tag(sources)
-      if Rails.env.development? || Rails.env.test?
+      if ENV['GNAPPY_ASSETS_MODE'] == "development" || Rails.env.test?
         javascript_include_tag sources
       else
         output = ''
@@ -17,7 +17,7 @@ module Gnappy
     end
 
     def gnappy_stylesheet_link_tag(sources)
-      if Rails.env.development? || Rails.env.test?
+      if ENV['GNAPPY_ASSETS_MODE'] == "development" || Rails.env.test?
         stylesheet_link_tag sources
       else
         output = ''
