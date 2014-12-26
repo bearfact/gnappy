@@ -3,8 +3,6 @@ require 'json'
 module Gnappy
   module TagHelpers
     def gnappy_javascript_include_tag(sources)
-      Rails.logger.info "***************************"
-      Rails.logger.info ENV['GNAPPY_ASSETS_ENV']
       if Rails.env.development? || Rails.env.test?
         javascript_include_tag sources
       else
