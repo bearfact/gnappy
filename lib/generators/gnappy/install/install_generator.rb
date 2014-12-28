@@ -25,6 +25,18 @@ module Gnappy
         application "config.assets.paths << Rails.root.join('vendor', 'assets', 'components')"
       end
 
+      def inject_tag_helpers
+        insert_into_file 'app/controllers/application_controller.rb',
+        after: "class ApplicationController < ActionController::Base\n" do
+          out = ''
+          out << '  # tag helpers for gnappy'
+          out << "\n"
+          out << '  helper Gnappy::TagHelpers'
+          out << "\n"
+          out << "\n"
+        end
+      end
+
       def inject_git_ignore
         append_to_file ".gitignore" do
           out = ""

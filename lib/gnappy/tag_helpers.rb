@@ -9,7 +9,7 @@ module Gnappy
         output = ''
         sources = *sources
         sources.each do |file_name|
-          path = '/assets/build/' + gulp_manifest["#{file_name}.js"]
+          path = '/assets/' + gulp_manifest["#{file_name}.js"]
           output = output + "<script type='text/javascript' src='#{path}'></script>"
         end
         output.html_safe
@@ -23,7 +23,7 @@ module Gnappy
         output = ''
         sources = *sources
         sources.each do |file_name|
-          path = '/assets/build/' + gulp_manifest["#{file_name}.css"]
+          path = '/assets/' + gulp_manifest["#{file_name}.css"]
           output = output + "<link href='#{path}' media='screen' rel='stylesheet'>"
         end
         output.html_safe
@@ -35,8 +35,8 @@ module Gnappy
     private
 
     def gulp_manifest
-      @manifest ||= if File.exist?(Rails.root.join('rev-manifest.json'))
-                      file = File.read(Rails.root.join('rev-manifest.json'))
+      @manifest ||= if File.exist?(Rails.root.join('public/assets/rev-manifest.json'))
+                      file = File.read(Rails.root.join('public/assets/rev-manifest.json'))
                       @manifest = JSON.parse(file)
                     else
                       {}
